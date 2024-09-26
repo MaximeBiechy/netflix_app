@@ -1,6 +1,6 @@
 # netflix_app
 
-A new Flutter project.
+Netflix Clone App.
 
 ## Getting Started
 
