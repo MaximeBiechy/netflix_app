@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:netflix_app/core/configs/routes/app_router.dart';
 import 'package:netflix_app/core/configs/theme/app_theme.dart';
+import 'package:netflix_app/core/service_locator.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
+  initializeServiceLocator();
   runApp(const MyApp());
 }
 
