@@ -28,7 +28,16 @@ class _HomePageState extends State<HomePage>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTabBar(),
-            _buildTrendingSection(),
+            SizedBox(
+              height: 260,
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  _buildTrendingSection(),
+                  Container(),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -85,11 +94,11 @@ class _HomePageState extends State<HomePage>
   Widget _buildTrendingSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Text('Tendances actuelles',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              style: Theme.of(context).textTheme.titleMedium),
         ),
         MovieSection(), // ! This is the movie section widget
       ],
