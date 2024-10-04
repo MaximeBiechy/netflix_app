@@ -9,13 +9,18 @@ class MoviePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image.network(
-        'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-        width: 130,
-        height: 200,
-        fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/movie-details', arguments: movie.id);
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.network(
+          'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+          width: 130,
+          height: 200,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

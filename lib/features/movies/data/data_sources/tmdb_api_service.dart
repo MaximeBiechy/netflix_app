@@ -6,6 +6,8 @@ import 'package:netflix_app/features/movies/domain/entities/movie.dart';
 
 abstract class TMDBApiService {
   Future<Either> getPopularMovies();
+  Future<Either> getMovieDetails(int movieId);
+  static const language = 'fr-FR';
 }
 
 class TMDBApiServiceImpl extends TMDBApiService {
@@ -22,6 +24,7 @@ class TMDBApiServiceImpl extends TMDBApiService {
         '${AppConfig.baseApiUrl}/movie/popular',
         queryParameters: {
           'api_key': AppConfig.apiKey,
+          'language': TMDBApiService.language,
         },
       );
 
@@ -35,4 +38,23 @@ class TMDBApiServiceImpl extends TMDBApiService {
       return Left("An error occurred while fetching popular movies");
     }
   }
+
+  @override
+  Future<Either> getMovieDetails(int movieId) async {
+    try {
+      final response = await _dio.get(
+        '${AppConfig.baseApiUrl}/movie/$movieId',
+        queryParameters: {
+          'api_key': AppConfig.apiKey,
+          'language': TMDBApiService.language,
+        },
+      );
+
+      var movieDetail = MovieModel.fromJson(response.data).toEntity();
+      return Right(movieDetail);
+    } catch (e) {
+      return Left("An error occurred while fetching movie details");
+    }
+  }
+
 }

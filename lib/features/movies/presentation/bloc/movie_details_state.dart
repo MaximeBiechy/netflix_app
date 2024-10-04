@@ -1,0 +1,15 @@
+part of 'movie_details_cubit.dart';
+
+abstract class MovieDetailsState {}
+
+class MovieDetailsLoading extends MovieDetailsState {}
+
+class MovieDetailsLoaded extends MovieDetailsState {
+  final Movie movie;
+  MovieDetailsLoaded(this.movie);
+}
+
+class MovieDetailsError extends MovieDetailsState {
+  final String message;
+  MovieDetailsError(this.message);
+}

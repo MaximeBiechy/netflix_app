@@ -10,4 +10,9 @@ class MovieRepositoryImpl extends MovieRepository {
   Future<Either> getPopularMovies() async {
     return await sl<TMDBApiService>().getPopularMovies();
   }
+
+  @override
+  Future<Either> getMovieDetails(int movieId) async {
+    return await sl<TMDBApiService>().getMovieDetails(movieId);
+  }
 }

@@ -5,6 +5,7 @@ import 'package:netflix_app/features/movies/domain/usecases/get_popular_movies.d
 
 import '../features/movies/data/repositories/movie_repository_impl.dart';
 import '../features/movies/domain/repositories/movie_repository.dart';
+import '../features/movies/domain/usecases/get_movie_details.dart';
 
 final sl = GetIt.instance;
 
@@ -17,5 +18,6 @@ Future<void> initializeServiceLocator() async {
   sl.registerLazySingleton<MovieRepository>(() => MovieRepositoryImpl());
   // ! Use cases
   sl.registerLazySingleton<GetPopularMovies>(() => GetPopularMovies());
+  sl.registerLazySingleton<GetMovieDetails>(() => GetMovieDetails());
 
 }

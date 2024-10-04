@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_app/features/movies/domain/entities/movie.dart';
 import 'package:netflix_app/features/movies/presentation/widgets/movie_preview.dart';
 
+import '../../../../core/configs/theme/app_colors.dart';
 import '../bloc/popular_movies_cubit.dart';
 
 class MovieSection extends StatelessWidget {
@@ -15,7 +16,7 @@ class MovieSection extends StatelessWidget {
       child: BlocBuilder<PopularMoviesCubit, PopularMoviesState>(
         builder: (context, state) {
           if (state is PopularMoviesLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(color: AppColors.primary));
           } else if (state is PopularMoviesLoaded) {
             return _buildHorizontalMovieList(state.movies);
           } else if (state is PopularMoviesLoadFailure) {
