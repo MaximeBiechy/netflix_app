@@ -13,7 +13,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   Future<void> fetchMovieDetails(int movieId) async {
     var movieDetails = await sl<GetMovieDetails>().call(params: movieId);
     movieDetails.fold(
-      (failure) => emit(MovieDetailsError(failure.message)),
+      (failure) => emit(MovieDetailsError(failure)),
       (movie) => emit(MovieDetailsLoaded(movie)),
     );
   }
