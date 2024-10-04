@@ -1,13 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:netflix_app/core/configs/env/app_config.dart';
+import 'package:netflix_app/features/movies/actors/data/models/actor_model.dart';
+import 'package:netflix_app/features/movies/actors/domain/entities/actor.dart';
 import 'package:netflix_app/features/movies/data/models/movie_model.dart';
 import 'package:netflix_app/features/movies/domain/entities/movie.dart';
 
 abstract class TMDBApiService {
+  static const language = 'fr-FR';
+
   Future<Either> getPopularMovies();
   Future<Either> getMovieDetails(int movieId);
-  static const language = 'fr-FR';
+  Future<Either> getMovieCredits(int movieId);
 }
 
 class TMDBApiServiceImpl extends TMDBApiService {
@@ -54,6 +58,29 @@ class TMDBApiServiceImpl extends TMDBApiService {
       return Right(movieDetail);
     } catch (e) {
       return Left("An error occurred while fetching movie details");
+    }
+  }
+
+  @override
+  Future<Either> getMovieCredits(int movieId) async {
+    try {
+      List<Actor> actors = [];
+
+      final response = await _dio.get(
+        '${AppConfig.baseApiUrl}/movie/$movieId/credits',
+        queryParameters: {
+          'api_key': AppConfig.apiKey,
+        },
+      );
+
+      for (var actor in response.data['cast']) {
+        var actorModel = ActorModel.fromJson(actor);
+        actors.add(actorModel.toEntity());
+      }
+
+      return Right(actors);
+    } catch (e) {
+      return Left("An error occurred while fetching movie credits");
     }
   }
 
