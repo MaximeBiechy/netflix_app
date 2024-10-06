@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix_app/core/configs/env/app_config.dart';
 import 'package:netflix_app/features/movies/domain/entities/movie.dart';
 
 class MoviePreview extends StatelessWidget {
@@ -16,7 +17,7 @@ class MoviePreview extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Image.network(
-          'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+          '${AppConfig.imageBaseUrl}${movie.posterPath}',
           width: 130,
           height: 200,
           fit: BoxFit.cover,

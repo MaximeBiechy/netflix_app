@@ -28,7 +28,7 @@ class TMDBApiServiceImpl extends TMDBApiService {
         '${AppConfig.baseApiUrl}/movie/popular',
         queryParameters: {
           'api_key': AppConfig.apiKey,
-          'language': TMDBApiService.language,
+          'language': AppConfig.language,
         },
       );
 
@@ -50,7 +50,7 @@ class TMDBApiServiceImpl extends TMDBApiService {
         '${AppConfig.baseApiUrl}/movie/$movieId',
         queryParameters: {
           'api_key': AppConfig.apiKey,
-          'language': TMDBApiService.language,
+          'language': AppConfig.language,
         },
       );
 

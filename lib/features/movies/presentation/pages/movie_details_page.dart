@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_app/common/widgets/button/basic_app_button.dart';
+import 'package:netflix_app/core/configs/env/app_config.dart';
 import 'package:netflix_app/core/configs/theme/app_colors.dart';
 import 'package:netflix_app/features/movies/actors/presentation/widgets/actors_list.dart';
 import 'package:netflix_app/features/movies/presentation/bloc/movie_details_cubit.dart';
@@ -32,7 +33,7 @@ class MovieDetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.network(
-                        'https://image.tmdb.org/t/p/w500${state.movie.backdropPath}'),
+                        '${AppConfig.imageBaseUrl}${state.movie.backdropPath}'),
                     Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
