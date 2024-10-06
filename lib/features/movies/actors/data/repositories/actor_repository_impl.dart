@@ -10,4 +10,9 @@ class ActorRepositoryImpl extends ActorRepository {
     return await sl<TMDBApiService>().getMovieCredits(movieId);
   }
 
+  @override
+  Future<Either> getMoviesByActor(int actorId) async {
+    return await sl<TMDBApiService>().getMoviesByActor(actorId);
+  }
+
 }

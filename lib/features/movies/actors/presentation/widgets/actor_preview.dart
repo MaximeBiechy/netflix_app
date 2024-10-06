@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/configs/env/app_config.dart';
 
@@ -11,13 +10,19 @@ class ActorPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(
-            '${AppConfig.imageBaseUrl}${actor.profilePath}'),
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/actor-movies', arguments: actor);
+      },
+      child: ListTile(
+        leading: CircleAvatar(
+          backgroundImage:
+              NetworkImage('${AppConfig.imageBaseUrl}${actor.profilePath}'),
+        ),
+        title: Text(actor.name, style: Theme.of(context).textTheme.bodyLarge),
+        subtitle: Text(actor.character,
+            style: Theme.of(context).textTheme.labelSmall),
       ),
-      title: Text(actor.name, style: Theme.of(context).textTheme.bodyLarge),
-      subtitle: Text(actor.character, style: Theme.of(context).textTheme.labelSmall),
     );
   }
 }

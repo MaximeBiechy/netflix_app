@@ -10,8 +10,12 @@ abstract class TMDBApiService {
   static const language = 'fr-FR';
 
   Future<Either> getPopularMovies();
+
   Future<Either> getMovieDetails(int movieId);
+
   Future<Either> getMovieCredits(int movieId);
+
+  Future<Either> getMoviesByActor(int actorId);
 }
 
 class TMDBApiServiceImpl extends TMDBApiService {
@@ -84,4 +88,27 @@ class TMDBApiServiceImpl extends TMDBApiService {
     }
   }
 
+  @override
+  Future<Either> getMoviesByActor(int actorId) async {
+    try {
+      List<Movie> movies = [];
+
+      final response = await _dio.get(
+          '${AppConfig.baseApiUrl}/person/$actorId/movie_credits',
+          queryParameters: {
+            'api_key': AppConfig.apiKey,
+            'language': AppConfig.language,
+          });
+
+
+      for (var movie in response.data['cast']) {
+        var movieModel = MovieModel.fromJson(movie);
+        movies.add(movieModel.toEntity());
+      }
+
+      return Right(movies);
+    } catch (e) {
+      return Left("An error occurred while fetching movies by actor");
+    }
+  }
 }

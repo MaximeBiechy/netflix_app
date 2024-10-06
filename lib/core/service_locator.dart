@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:netflix_app/features/movies/actors/domain/usecases/get_movies_by_actor.dart';
 import 'package:netflix_app/features/movies/data/data_sources/tmdb_api_service.dart';
 import 'package:netflix_app/features/movies/domain/usecases/get_popular_movies.dart';
 
@@ -24,5 +25,6 @@ Future<void> initializeServiceLocator() async {
   sl.registerLazySingleton<GetPopularMovies>(() => GetPopularMovies());
   sl.registerLazySingleton<GetMovieDetails>(() => GetMovieDetails());
   sl.registerLazySingleton<GetMovieCredit>(() => GetMovieCredit());
+  sl.registerLazySingleton<GetMoviesByActor>(() => GetMoviesByActor());
 
 }

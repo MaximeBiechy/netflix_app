@@ -37,11 +37,11 @@ class MovieModel {
   Movie toEntity() {
     return Movie(
       id: id!,
-      title: title!,
-      overview: overview!,
-      posterPath: posterPath!,
-      releaseDate: releaseDate!,
-      backdropPath: backdropPath!,
+      title: title ?? 'Unknown',
+      overview: overview ?? 'Unknown',
+      posterPath: posterPath ?? '',
+      releaseDate: releaseDate ?? 'Unknown',
+      backdropPath: backdropPath ?? '',
       genres: genres,
       runtime: runtime,
     );
