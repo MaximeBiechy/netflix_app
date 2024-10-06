@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_app/core/configs/theme/app_colors.dart';
+import 'package:netflix_app/features/movies/actors/presentation/widgets/actor_preview.dart';
 
 import '../bloc/actor_cubit.dart';
 
@@ -22,14 +23,7 @@ class ActorsList extends StatelessWidget {
                 itemCount: state.actors.length,
                 itemBuilder: (context, index) {
                   final actor = state.actors[index];
-                  return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          'https://image.tmdb.org/t/p/w500${actor.profilePath}'),
-                    ),
-                    title: Text(actor.name, style: Theme.of(context).textTheme.bodyLarge),
-                    subtitle: Text(actor.character, style: Theme.of(context).textTheme.labelSmall),
-                  );
+                  return ActorPreview(actor);
                 },
               );
             } else if (state is ActorError) {
