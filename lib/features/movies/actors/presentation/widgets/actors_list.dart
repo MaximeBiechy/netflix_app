@@ -27,8 +27,8 @@ class ActorsList extends StatelessWidget {
                       backgroundImage: NetworkImage(
                           'https://image.tmdb.org/t/p/w500${actor.profilePath}'),
                     ),
-                    title: Text(actor.name,),
-                    subtitle: Text(actor.character),
+                    title: Text(actor.name, style: Theme.of(context).textTheme.bodyLarge),
+                    subtitle: Text(actor.character, style: Theme.of(context).textTheme.labelSmall),
                   );
                 },
               );
