@@ -1,16 +1,10 @@
 # netflix_app
 
-Netflix Clone App.
+Netflix Clone App using TMDB API.
+Still updating...
 
-## Getting Started
+## App Images
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ <img src="https://github.com/user-attachments/assets/a4ab11ce-b13d-4bee-afed-02d9adaabb37" alt="netflix_movies_page" width="200px">
+ <img src="https://github.com/user-attachments/assets/de41ae6b-d98c-45fd-b079-7e118c520643" alt="netflix_movie_page" width="200px">
+ <img src="https://github.com/user-attachments/assets/c2b75895-39a3-4e4e-aa4b-e0e36b59a8bb" alt="netflix_actor_page" width="200px">
